@@ -17,11 +17,17 @@ export function add(sepNumbers) {
         }
 
         sepNumbers = sepNumbers.replace('n', "");
+
         if (sepNumbers.includes('-')) {
             str = "Negatives not allowed. " + sepNumbers;
             return str;
         }
-        numbers = sepNumbers.split(separator).map(Number).filter(n => !isNaN(n)).reduce((a, b) => a + b, 0);
+
+        numbers = sepNumbers
+            .split(separator)
+            .map(Number) // Convertit chaque élément en nombre
+            .reduce((a, b) => ((a >= 1000 ? 0 : a) + (b >= 1000 ? 0 : b)), 0);
+
         console.log("sepNumbers " + sepNumbers)
         console.log("separator " + separator)
         console.log("numbers " + numbers)

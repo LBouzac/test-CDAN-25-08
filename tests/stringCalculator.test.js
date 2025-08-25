@@ -26,4 +26,8 @@ describe('test of function add',() => {
     it('returns with negative numbers , ', () => {
         expect(add('//;\\n-2;-9;-4')).toBe("Negatives not allowed. -2;-9;-4")
     })
+
+    it('returns numbers except 1000 or more , ', () => {
+        expect(add('1,2,1002')).toBe(3)
+    })
 })
