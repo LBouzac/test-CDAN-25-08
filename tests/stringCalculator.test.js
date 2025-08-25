@@ -11,7 +11,11 @@ describe('test of function add',() => {
         expect(add('1,2,3,4,5,6,7,8,9,10')).toBe(55)
     })
 
-    it('returns numbers with \\n and , ', () => {
+    it('returns numbers with init number contains \\n , ', () => {
         expect(add('1\\n2,3')).toBe(6)
+    })
+
+    it('returns numbers with split //[delimiter]\\n[numbers...]', () => {
+        expect(add('//;\\n1;2')).toBe(3)
     })
 })
