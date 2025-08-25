@@ -4,7 +4,11 @@ import {add} from "../stringCalculator";
 describe('test of function add',() => {
 
     it('returns 0 for empty string', () => {
-        expect(add('0')).toBe(0)
+        expect(add('')).toBe(0)
+    })
+
+    it('returns 1 for string = 1', () => {
+        expect(add('1')).toBe(1)
     })
 
     it('returns infinity numbers', () => {
