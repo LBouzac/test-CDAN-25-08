@@ -18,4 +18,8 @@ describe('test of function add',() => {
     it('returns numbers with split //[delimiter]\\n[numbers...]', () => {
         expect(add('//;\\n1;2')).toBe(3)
     })
+
+    it('returns with negative number , ', () => {
+        expect(add(-2)).toBe("Negatives not allowed. -2")
+    })
 })
