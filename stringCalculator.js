@@ -1,3 +1,3 @@
 export function add(numbers) {
-    return 0
+    return numbers === '' ? 0 : Number(numbers);
 }
