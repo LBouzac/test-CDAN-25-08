@@ -1,40 +1,30 @@
 export function add(sepNumbers) {
-    let separator = ',';
-    let numbers;
-    let str;
-
     try {
+        if (!sepNumbers || sepNumbers === '0') return 0;
+
+        let separator = ',';
+
         if (sepNumbers.startsWith('//')) {
-            const newlineIndex = sepNumbers.indexOf('\\n');
-            separator = sepNumbers.substring(2, newlineIndex);
-            sepNumbers = sepNumbers.substring(newlineIndex + 1);
-        } else if (sepNumbers.includes('\\n')) {
+            const [customSep, rest] = sepNumbers.split('\\n');
+            separator = customSep.slice(2);
+            sepNumbers = rest;
+        } else {
             sepNumbers = sepNumbers.replace('\\n', ',');
         }
 
-        if (sepNumbers === '' || sepNumbers === '0') {
-            return 0;
-        }
-
-        sepNumbers = sepNumbers.replace('n', "");
-
         if (sepNumbers.includes('-')) {
-            str = "Negatives not allowed. " + sepNumbers;
-            return str;
+            return `Negatives not allowed: ${sepNumbers
+                .split(separator)
+                .map(Number)
+                .filter(num => num < 0)
+                .join(separator)}`;
         }
 
-        numbers = sepNumbers
+        return sepNumbers
             .split(separator)
-            .map(Number) // Convertit chaque élément en nombre
-            .reduce((a, b) => ((a >= 1000 ? 0 : a) + (b >= 1000 ? 0 : b)), 0);
-
-        console.log("sepNumbers " + sepNumbers)
-        console.log("separator " + separator)
-        console.log("numbers " + numbers)
-
-        return numbers;
-    }catch(err) {
+            .map(Number)
+            .reduce((sum, num) => sum + (num >= 1000 ? 0 : num), 0);
+    } catch (err) {
         return err.message;
     }
-
 }

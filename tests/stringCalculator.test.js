@@ -20,14 +20,27 @@ describe('test of function add',() => {
     })
 
     it('returns with negative number , ', () => {
-        expect(add('//\\n-2')).toBe("Negatives not allowed. -2")
+        expect(add('//;\\n-2;5')).toBe("Negatives not allowed: -2")
     })
 
     it('returns with negative numbers , ', () => {
-        expect(add('//;\\n-2;-9;-4')).toBe("Negatives not allowed. -2;-9;-4")
+        expect(add('//;\\n-2;-9;-4')).toBe("Negatives not allowed: -2;-9;-4")
     })
 
     it('returns numbers except 1000 or more , ', () => {
         expect(add('1,2,1002')).toBe(3)
     })
+
+    // it('returns numbers with multi-character delimiter', () => {
+    //     expect(add('//[***]\n1***2***3')).toBe(6);
+    // });
+    //
+    // it('returns numbers with multiple delimiters', () => {
+    //     expect(add('//[*][%]\n1*2%3')).toBe(6);
+    // });
+    //
+    // it('returns numbers with multiple multi-character delimiters', () => {
+    //     expect(add('//[**][%%]\n1**2%%3')).toBe(6);
+    // });
+
 })
