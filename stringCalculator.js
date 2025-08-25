@@ -17,6 +17,10 @@ export function add(sepNumbers) {
         }
 
         sepNumbers = sepNumbers.replace('n', "");
+        if (sepNumbers.includes('-')) {
+            str = "Negatives not allowed. " + sepNumbers;
+            return str;
+        }
         numbers = sepNumbers.split(separator).map(Number).filter(n => !isNaN(n)).reduce((a, b) => a + b, 0);
         console.log("sepNumbers " + sepNumbers)
         console.log("separator " + separator)
@@ -24,10 +28,6 @@ export function add(sepNumbers) {
 
         return numbers;
     }catch(err) {
-        if (sepNumbers < 0) {
-            str = "Negatives not allowed. " + sepNumbers;
-            return str;
-        }
         return err.message;
     }
 

@@ -20,6 +20,10 @@ describe('test of function add',() => {
     })
 
     it('returns with negative number , ', () => {
-        expect(add(-2)).toBe("Negatives not allowed. -2")
+        expect(add('//\\n-2')).toBe("Negatives not allowed. -2")
+    })
+
+    it('returns with negative numbers , ', () => {
+        expect(add('//;\\n-2;-9;-4')).toBe("Negatives not allowed. -2;-9;-4")
     })
 })
